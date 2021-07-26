@@ -1,0 +1,28 @@
+{
+  "name": "slader bypass",
+  "version": "0.8",
+  "author":"Alan Li & Ethan Harvey",
+  "description": "Slader/Quizlet 5 solutions limit bypass",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://*.slader.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+        "matches": ["*://*.slader.com/textbook/*"],
+        "js": ["js/content_script.js"]
+    },
+    {
+      "matches": ["*://quizlet.com/explanations/questions/*", "*://quizlet.com/explanations/textbook-solutions/*/*"],
+      "js": ["js/katex/katex.js", "js/katex/autorender.js", "js/quizlet_bypass.js"]
+  }
+],
+  "manifest_version": 2
+  }
